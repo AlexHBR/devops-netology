@@ -1,7 +1,6 @@
 # Домашнее задание к занятию «2.4. Инструменты Git» #
 
-  
-1. Найдите полный хеш и комментарий коммита, хеш которого начинается на aefea?  
+  1. Найдите полный хеш и комментарий коммита, хеш которого начинается на aefea?  
 `>git show aefea`  
     >aefead2207ef7e2aa5dc81a34aedf0cad4c32545  
     Update CHANGELOG.md  
@@ -10,11 +9,12 @@
 `>git show 85024`  
     >commit 85024d3100126de36331c6982bfaac02cdab9e76 (tag: v0.12.23)  
 
-3. Сколько родителей у коммита b8d720? Напишите их хеши.
-`>git show --pretty=format:" %P" b8d720`
-    >56cd7859e05c36c06b56d013b55a252d0bb7e158 9ea88f22fc6269854151c571162c5bcf958bee2b
- 
-4. Перечислите хеши и комментарии всех коммитов которые были сделаны между тегами v0.12.23 и v0.12.24.  
+3. Сколько родителей у коммита b8d720? Напишите их хеши.  
+`>git show --pretty=format:" %P" b8d720`  
+    >56cd7859e05c36c06b56d013b55a252d0bb7e158  
+    9ea88f22fc6269854151c571162c5bcf958bee2b
+
+4. Перечислите хеши и комментарии всех коммитов которые были сделаны между тегами v0.12.23 и v0.12.24.    
 `>git log  v0.12.23..v0.12.24  --oneline`
     >33ff1c03b (tag: v0.12.24) v0.12.24  
     b14b74c49 [Website] vmc provider links  
@@ -27,11 +27,18 @@
     dd01a3507 Update CHANGELOG.md  
     225466bc3 Cleanup after v0.12.23 release  
 
-5. Найдите коммит в котором была создана функция func providerSource, ее определение в коде выглядит так func providerSource(...) (вместо троеточего перечислены аргументы).   
+5. Найдите коммит в котором была создана функция func providerSource, ее определение в коде выглядит так func providerSource(...) (вместо троеточего перечислены аргументы).     
 `>git log -S"func providerSource" --oneline`  
     функция func providerSource создана в commit 8c928e83589d90a031f811fae52a81be7153e82f
 
-6. Кто автор функции synchronizedWriters?  
+6. Найдите все коммиты в которых была изменена функция globalPluginDirs.  
+`>git log -L :'func globalPluginDirs':plugins.go --oneline`    
+    >commit 78b12205587fe839f10d946ea3fdc06719decb05  
+    commit 52dbf94834cb970b510f2fba853a5b49ad9b1a46  
+    commit 41ab0aef7a0fe030e84018973a64135b11abcd70  
+    commit 66ebff90cdfaa6938f26f908c7ebad8d547fea17  
+
+7. Кто автор функции synchronizedWriters?    
 `>git log -S"func synchronizedWriters" --pretty=format:"%h - %an %ae"`  
     >bdfea50cc - James Bardin j.bardin@gmail.com  
     5ac311e2a - Martin Atkins mart@degeneration.co.uk
